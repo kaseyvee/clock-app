@@ -4,11 +4,13 @@ import Time from "./components/Time"
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <Quote />
-      <Time />
-      <Button />
-    </div>
+      <div className="App_bottom">
+        <Time />
+        <Button />
+      </div>
+    </main>
   )
 }
 

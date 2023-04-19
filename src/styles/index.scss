@@ -6,6 +6,36 @@
 }
 
 body {
+  $padding: 1.5rem;
+  padding: $padding;
+  height: calc(100vh - $padding * 2);
   background-color: green;
-  padding: 1.5rem;
+
+  #root {
+    height: 100%;
+    
+    .App {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  
+      &_bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+  
+        @media (min-width: 768px) {
+          gap: 5rem;
+        }
+        
+        @media (min-width: 1024px) {
+          gap: unset;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-end;
+        }
+      }
+    }
+  }
 }
