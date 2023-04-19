@@ -9,7 +9,6 @@ import Details from "./components/Details";
 import Quote from "./components/Quote";
 import Time from "./components/Time";
 
-
 function App() {
   const [openDetails, setOpenDetails] = useState(false);
   const [jumpHeight, setJumpHeight] = useState(0);
@@ -43,7 +42,7 @@ function App() {
           y: openDetails ? [0, jumpHeight] : [jumpHeight, 0]
         }}
       >
-        {data.length > 0 ? <>
+        {data.length > 0 && <>
           <Quote
             quote={data[1]}
             refresh={data[3]}
@@ -61,9 +60,7 @@ function App() {
               openDetails={openDetails}
             />
           </div>
-        </>
-        :
-        <span>loading...</span>}
+        </>}
       </motion.div>
       <Details
         time={data[0]}
