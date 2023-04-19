@@ -4,8 +4,8 @@ function Button({ onClick, openDetails }) {
   return (
     <button
       className="button text_button"
-      aria-label="see more details"
-      aria-expanded="false"
+      aria-label={`see ${openDetails ? "less" : "more"} details`}
+      aria-expanded={openDetails ? "true" : "false"}
       onClick={onClick}
     >
       <span>{openDetails ? "LESS" : "MORE"}</span>

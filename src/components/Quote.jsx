@@ -1,4 +1,14 @@
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useState } from "react";
+ 
 function Quote({ quote, setRefresh, refresh }) {
+  const [newQuote, setNewQuote] = useState("");
+
+  useEffect(() => {
+    setNewQuote(quote);
+    setNewQuote("");
+  }, [quote])
   
   return (
     <div className="quote">
@@ -11,9 +21,14 @@ function Quote({ quote, setRefresh, refresh }) {
         </span>
       </div>
 
-      <button aria-label="Refresh for new quote" onClick={() => setRefresh(!refresh)}>
+      <motion.button
+        aria-label="Refresh for new quote"
+        onClick={() => setRefresh(!refresh)}
+        animate={newQuote && { rotate: 360 }}
+        transition={{ duration: Infinity }}
+      >
         <img src="desktop/icon-refresh.svg" alt="" />
-      </button>
+      </motion.button>
     </div>
   );
 }

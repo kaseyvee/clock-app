@@ -18,5 +18,15 @@
     background: none;
     border: none;
     padding: 0;
+    cursor: pointer;
+    transition-duration: 200ms;
+
+    &:hover, &:focus {
+      filter: brightness(0.2);
+    }
+    
+    &:active {
+      filter: brightness(1);
+    }
   }
 }

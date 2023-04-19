@@ -6,6 +6,7 @@
   background-color: $white;
   padding: 0;
   width: fit-content;
+  cursor: pointer;
 
   span {
     width: 5.5rem;
@@ -20,10 +21,16 @@
     width: 32px;
     height: 32px;
     margin: 0.4rem 0.4rem 0.4rem 0;
+    transition-duration: 200ms;
 
     img {
       width: 9.6px;
       height: 4.8px;
     }
+    
+    &:hover, &:focus {
+      filter: brightness(1.5);
+    }
   }
+
 }
