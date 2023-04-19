@@ -1,4 +1,5 @@
 import Button from "./components/Button"
+import Details from "./components/Details"
 import Quote from "./components/Quote"
 import Time from "./components/Time"
 
@@ -10,6 +11,7 @@ function App() {
         <Time />
         <Button />
       </div>
+      <Details />
     </main>
   )
 }

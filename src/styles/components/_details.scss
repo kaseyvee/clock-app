@@ -1,0 +1,22 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  background-color: rebeccapurple;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  $paddingX: 2rem;
+
+  width: calc(100% - $paddingX * 2);
+  padding: 3.5rem 2rem;
+
+  &_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

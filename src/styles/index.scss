@@ -6,16 +6,28 @@
 }
 
 body {
-  $padding: 1.5rem;
-  padding: $padding;
-  height: calc(100vh - $padding * 2);
+  $paddingY: 2rem;
+
+  padding: $paddingY 1.5rem;
+  height: calc(100vh - $paddingY * 2);
   background-color: green;
+  
+  @media (min-width: 768px) {
+    $paddingY: 5rem;
+
+    padding: $paddingY 3.5rem;
+    height: calc(100vh - $paddingY * 2);
+  }
 
   #root {
     height: 100%;
+    width: 100%;
+
+    @include center;
     
     .App {
       height: 100%;
+      width: min(100%, 1100px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
