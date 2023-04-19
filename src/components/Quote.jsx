@@ -1,6 +1,4 @@
-// import { useFetchData } from "../useFetchData"
-
-function Quote({ quote }) {
+function Quote({ quote, setRefresh, refresh }) {
   
   return (
     <div className="quote">
@@ -13,7 +11,7 @@ function Quote({ quote }) {
         </span>
       </div>
 
-      <button aria-label="Refresh for new quote">
+      <button aria-label="Refresh for new quote" onClick={() => setRefresh(!refresh)}>
         <img src="desktop/icon-refresh.svg" alt="" />
       </button>
     </div>

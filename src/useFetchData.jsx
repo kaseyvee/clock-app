@@ -23,12 +23,18 @@ export const useFetchData = () => {
         const time = results[0].data;
         // const place = results[1].data.data.location;
         const quote = results[2].data;
-        setState([time, quote]);
+        
+        // Sees if daylight is out
+        const hour = Number(time?.datetime[11]) + Number(time?.datetime[12]);
+        let day = null;
+        if (hour >= 18 || hour <= 5) day = false;
+        else day = true;
 
+        setState([time, quote, day, refresh, setRefresh]);
+
+        // Rerenders every new minute
         let seconds = Number(time?.datetime[17] + time?.datetime[18]);
-
         let timeout = 60000 - (1000 * seconds);
-        console.log(timeout)
 
         setTimeout(() => {
           setRefresh(!refresh);

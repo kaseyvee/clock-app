@@ -4,17 +4,22 @@
   border: none;
   color: $lightGrey;
   background-color: $white;
+  padding: 0;
   width: fit-content;
-  padding-left: 1.15rem;
+
+  span {
+    width: 5.5rem;
+    text-align: center;
+    margin-left: 0.5rem;
+  }
   
-  button {
+  &_arrow {
     @include center;
-    border: none;
     border-radius: 50%;
     background-color: $grey;
     width: 32px;
     height: 32px;
-    margin: 0.25rem 0.25rem 0.25rem 0.65rem;
+    margin: 0.4rem 0.4rem 0.4rem 0;
 
     img {
       width: 9.6px;

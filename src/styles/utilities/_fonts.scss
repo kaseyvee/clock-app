@@ -2,7 +2,6 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  color: $white;
 }
 
 h1 {
@@ -126,12 +125,15 @@ h3 {
   @include pixelsToRem(15);
   font-weight: 300;
   line-height: 28px;
-
+  transform: translateY(-0.25rem);
+  
   @media (min-width: 768px) {
     @include pixelsToRem(32);
+    transform: translateY(-1.35rem);
   }
-
+  
   @media (min-width: 1024px) {
     @include pixelsToRem(40);
+    transform: translateY(-1.75rem);
   }
 }

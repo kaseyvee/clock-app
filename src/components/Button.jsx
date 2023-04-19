@@ -1,11 +1,24 @@
-function Button() {
+import { motion } from "framer-motion";
+
+function Button({ onClick, openDetails }) {
   return (
-    <div className="button text_button">
-      MORE
-      <button aria-label="see more details" aria-expanded="false">
-        <img src="desktop/icon-arrow-down.svg" alt="" />
-      </button>
-    </div>
+    <button
+      className="button text_button"
+      aria-label="see more details"
+      aria-expanded="false"
+      onClick={onClick}
+    >
+      <span>{openDetails ? "LESS" : "MORE"}</span>
+      <motion.div
+        animate={{ rotate: openDetails ? 180 : 0 }}
+        className="button_arrow"
+      >
+        <img
+          src="desktop/icon-arrow-down.svg"
+          alt=""
+        />
+      </motion.div>
+    </button>
   );
 }
 

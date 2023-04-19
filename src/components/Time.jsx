@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
-import Moment from "react-moment";
 import { useMediaQuery } from "react-responsive";
+import Moment from "react-moment";
 
-function Time({ time }) {
-  const [day, setDay] = useState(false);
+function Time({ time, day }) {
   const [greeting, setGreeting] = useState("");
-
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
 
   useEffect(() => {
     getGreeting();
@@ -15,16 +12,12 @@ function Time({ time }) {
   function getGreeting() {
     let hour = Number(time?.datetime[11]) + Number(time?.datetime[12]);
 
-    if (hour >= 18 || hour <= 5) {
-      setDay(false);
-      return setGreeting("GOOD EVENING");
-    }
+    if (hour >= 18 || hour <= 5) return setGreeting("GOOD EVENING");
     else if (hour >= 12) return setGreeting("GOOD AFTERNOON");
-    else if (hour >= 0){
-      setDay(true);
-      return setGreeting("GOOD MORNING");
-    }
+    else if (hour >= 0) return setGreeting("GOOD MORNING");
   }
+
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
 
   return (
     <div className="time">
