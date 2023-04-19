@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: $white;
+}
+
+h1 {
+  @include pixelsToRem(100);
+  font-weight: 700;
+  line-height: 100px;
+  letter-spacing: -2.5px;
+  
+  @media (min-width: 768px) {
+    @include pixelsToRem(175);
+    line-height: 175px;
+    letter-spacing: -4.38px;
+  }
+  
+  @media (min-width: 1025px) {
+    @include pixelsToRem(200);
+    line-height: 200px;
+    letter-spacing: -5px;
+  }
+}
+
+h2 {
+  @include pixelsToRem(15);
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  @media (min-width: 768px) {
+    @include pixelsToRem(18);
+    letter-spacing: 3.6px;
+  }
+  
+  @media (min-width: 1025px) {
+    @include pixelsToRem(24);
+    letter-spacing: 4.8px;
+  }
+}
+
+h3 {
+  @include pixelsToRem(10);
+  font-weight: 400;
+  letter-spacing: 2px;
+
+  @media (min-width: 768px) {
+    @include pixelsToRem(13);
+    letter-spacing: 2.6px;
+  }
+  
+  @media (min-width: 1025px) {
+    @include pixelsToRem(15);
+    letter-spacing: 3px;
+  }
+}
+
+.text_info {
+  @include pixelsToRem(20);
+  font-weight: 700;
+  
+  @media (min-width: 768px) {
+    @include pixelsToRem(40);
+  }
+  
+  @media (min-width: 1025px) {
+    @include pixelsToRem(56);
+  }
+}
+
+.text_quote {
+  @include pixelsToRem(12);
+  font-weight: 400;
+  line-height: 22px;
+  
+  @media (min-width: 768px) {
+    @include pixelsToRem(18);
+    line-height: 28px;
+  }
+}
+
+.text_quote-author {
+  @include pixelsToRem(12);
+  font-weight: 700;
+  line-height: 22px;
+  
+  @media (min-width: 768px) {
+    @include pixelsToRem(18);
+    line-height: 28px;
+  }
+}
+
+.text_greeting {
+  @include pixelsToRem(15);
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 3px;
+
+  @media (min-width: 768px) {
+    @include pixelsToRem(18);
+    line-height: 28px;
+    letter-spacing: 3.6px;
+  }
+  
+  @media (min-width: 1025px) {
+    @include pixelsToRem(20);
+    letter-spacing: 4px;
+  }
+}
+
+.text_button {
+  @include pixelsToRem(12);
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 3.75px;
+
+  @media (min-width: 768px) {
+    @include pixelsToRem(16);
+    line-height: 28px;
+    letter-spacing: 5px;
+  }
+}
+
+.text_timezone {
+  @include pixelsToRem(15);
+  font-weight: 300;
+  line-height: 28px;
+
+  @media (min-width: 768px) {
+    @include pixelsToRem(32);
+  }
+
+  @media (min-width: 1025px) {
+    @include pixelsToRem(40);
+  }
+}

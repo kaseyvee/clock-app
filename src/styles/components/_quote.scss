@@ -1,0 +1,21 @@
+.quote {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  
+  &_main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .text_quote {
+      max-width: 540px;
+    }
+  }
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+}

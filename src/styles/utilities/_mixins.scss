@@ -1,0 +1,10 @@
+@mixin pixelsToRem($pixels) {
+  font-size: calc($pixels / 16) + rem;
+}
+
+@mixin center($direction: row) {
+  display: flex;
+  justify-content: $direction;
+  justify-content: center;
+  align-items: center;
+}

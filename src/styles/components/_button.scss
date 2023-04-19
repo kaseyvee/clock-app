@@ -1,0 +1,24 @@
+.button {
+  @include center;
+  border-radius: 28px;
+  border: none;
+  color: $lightGrey;
+  background-color: $white;
+  width: fit-content;
+  padding-left: 1.15rem;
+  
+  button {
+    @include center;
+    border: none;
+    border-radius: 50%;
+    background-color: $grey;
+    width: 32px;
+    height: 32px;
+    margin: 0.25rem 0.25rem 0.25rem 0.65rem;
+
+    img {
+      width: 9.6px;
+      height: 4.8px;
+    }
+  }
+}
