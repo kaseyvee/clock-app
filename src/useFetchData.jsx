@@ -6,11 +6,11 @@ export const useFetchData = () => {
   const [refresh, setRefresh] = useState(false);
 
   function getTime() {
-    return axios.get("http://worldtimeapi.org/api/ip");
+    return axios.get("https://worldtimeapi.org/api/ip");
   }
   
   function getPlace() {
-    return axios.get("http://worldtimeapi.org/api/ip");
+    return axios.get("https://worldtimeapi.org/api/ip");
   }
   
   function getQuote() {
