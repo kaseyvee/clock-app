@@ -9,12 +9,16 @@ function App() {
 
   return (
     <main className="App">
-      <Quote quote={data.quote} />
-      <div className="App_bottom">
-        <Time time={data.time} />
-        <Button />
-      </div>
-      {/* <Details /> */}
+      {data.length > 0 ? <>
+        <Quote quote={data[1]} />
+        <div className="App_bottom">
+          <Time time={data[0]} />
+          <Button />
+        </div>
+        {/* <Details /> */}
+      </>
+      :
+      <span>loading...</span>}
     </main>
   )
 }

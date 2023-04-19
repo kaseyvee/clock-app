@@ -2,20 +2,8 @@ import axios from "axios"
 import { useState, useEffect } from "react";
 
 export const useFetchData = () => {
-  const [state, setState] = useState({
-    // time: {
-    //   abbreviation: "",
-    //   datetime: "",
-    //   timezone: "",
-    //   day_of_week: null,
-    //   day_of_year: null,
-    //   week_number: null,
-    // },
-    // quote: {
-    //   author: "",
-    //   content: "",
-    // }
-  });
+  const [state, setState] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   function getTime() {
     return axios.get("http://worldtimeapi.org/api/ip");
@@ -35,10 +23,19 @@ export const useFetchData = () => {
         const time = results[0].data;
         // const place = results[1].data.data.location;
         const quote = results[2].data;
-        setState({time, quote});
+        setState([time, quote]);
+
+        let seconds = Number(time?.datetime[17] + time?.datetime[18]);
+
+        let timeout = 60000 - (1000 * seconds);
+        console.log(timeout)
+
+        setTimeout(() => {
+          setRefresh(!refresh);
+        }, timeout)
       })
       .catch((err) => console.log(err.message))
-  }, [])
+  }, [refresh])
 
   return state;
 }

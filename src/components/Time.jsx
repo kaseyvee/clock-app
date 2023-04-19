@@ -1,21 +1,37 @@
+import { useState, useEffect } from "react";
 import Moment from "react-moment";
+import { useMediaQuery } from "react-responsive";
 
 function Time({ time }) {
+  const [day, setDay] = useState(false);
+  const [greeting, setGreeting] = useState("");
+
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
+
+  useEffect(() => {
+    getGreeting();
+  }, [])
 
   function getGreeting() {
-    let number = Number(time?.datetime[11]) + Number(time?.datetime[12]);
+    let hour = Number(time?.datetime[11]) + Number(time?.datetime[12]);
 
-    if (number >= 18) return "GOOD EVENING";
-    else if (number >= 12) return "GOOD AFTERNOON";
-    else return "GOOD MORNING";
+    if (hour >= 18 || hour <= 5) {
+      setDay(false);
+      return setGreeting("GOOD EVENING");
+    }
+    else if (hour >= 12) return setGreeting("GOOD AFTERNOON");
+    else if (hour >= 0){
+      setDay(true);
+      return setGreeting("GOOD MORNING");
+    }
   }
 
   return (
     <div className="time">
       <div className="time_greeting">
-        <img src="desktop/icon-sun.svg" alt="" />
+        <img src={`desktop/icon-${day ? "sun" : "moon"}.svg`} alt="" />
         <span className="text_greeting">
-          {getGreeting()}
+          {greeting + (isMobile ? "" : ", IT'S CURRENTLY")}
         </span>
       </div>
 
