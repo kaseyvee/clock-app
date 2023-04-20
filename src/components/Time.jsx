@@ -1,28 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import Moment from "react-moment";
 
-function Time({ time, day }) {
+import { DataContext } from "../dataContext";
+
+function Time() {
   const [greeting, setGreeting] = useState("");
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
+  const data = useContext(DataContext);
 
   useEffect(() => {
     getGreeting();
   }, [])
 
   function getGreeting() {
-    let hour = Number(time?.datetime[11]) + Number(time?.datetime[12]);
+    let hour = Number(data.time?.datetime[11]) + Number(data.time?.datetime[12]);
 
     if (hour >= 18 || hour <= 5) return setGreeting("GOOD EVENING");
     else if (hour >= 12) return setGreeting("GOOD AFTERNOON");
     else if (hour >= 0) return setGreeting("GOOD MORNING");
   }
 
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
-
   return (
     <div className="time">
       <div className="time_greeting">
-        <img src={`desktop/icon-${day ? "sun" : "moon"}.svg`} alt="" />
+        <img src={`desktop/icon-${data.day ? "sun" : "moon"}.svg`} alt="" />
         <span className="text_greeting">
           {greeting + (isMobile ? "" : ", IT'S CURRENTLY")}
         </span>
@@ -30,15 +32,16 @@ function Time({ time, day }) {
 
       <div className="time_current-time">
         <h1>
-          <Moment format="hh:mm">{time?.datetime}</Moment>
+          <Moment format="hh:mm">{data.time?.datetime}</Moment>
         </h1>
 
         <span className="text_timezone">
-          {time?.abbreviation}
+          {data.time?.abbreviation}
         </span>
       </div>
 
-      <h2>IN LONDON, UK</h2>
+      {/* <h2>IN {place?.city.name.toUpperCase()}, {place?.country.name.toUpperCase()}</h2> */}
+      <h2>IN VANCOUVER, CANADA</h2>
     </div>
   );
 }

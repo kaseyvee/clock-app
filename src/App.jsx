@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import { useFetchData } from "./useFetchData";
+import { DataContext } from "./dataContext";
 
 import Button from "./components/Button";
 import Details from "./components/Details";
@@ -14,60 +15,58 @@ function App() {
   const [jumpHeight, setJumpHeight] = useState(0);
 
   const data = useFetchData();
-
+  
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' });
 
-  useEffect(() => {
-    setOpenDetails(false);
-    getJumpHeight();
-  }, [isDesktop, isMobile])
-
+  const variants = {
+    y: openDetails ? [0, jumpHeight] : [jumpHeight, 0]
+  }
+  
   function getJumpHeight() {
     if (isMobile) return setJumpHeight(-150);
     if (isDesktop) return setJumpHeight(-350);
     return setJumpHeight(-320);
   }
+  
+  useEffect(() => {
+    setOpenDetails(false);
+    getJumpHeight();
+  }, [isDesktop, isMobile])
 
   return (
-    <main className="App" style={{
-        backgroundImage: `linear-gradient(
-          rgba(0, 0, 0, 0.4), 
-          rgba(0, 0, 0, 0.4)
-        ), url(desktop/bg-image-${data[2] ? "daytime" : "nighttime"}.jpg)`
-      }}>
-      <motion.div
-        className="App_main"
-        animate={{
-          y: openDetails ? [0, jumpHeight] : [jumpHeight, 0]
+    <DataContext.Provider value={data}>
+      <main
+        className="App"
+        style={{
+          backgroundImage: `linear-gradient(
+            rgba(0, 0, 0, 0.4), 
+            rgba(0, 0, 0, 0.4)
+          ), url(desktop/bg-image-${data.day ? "daytime" : "nighttime"}.jpg)`
         }}
       >
-        {data.length > 0 && <>
-          <Quote
-            quote={data[1]}
-            refresh={data[3]}
-            setRefresh={data[4]}
-            openDetail={openDetails}
-          />
-          <div className="App_main_bottom">
-            <Time
-              time={data[0]}
-              day={data[2]}
-              openDetails={openDetails}
-            />
-            <Button
-              onClick={() => setOpenDetails(!openDetails)}
-              openDetails={openDetails}
-            />
-          </div>
-        </>}
-      </motion.div>
-      <Details
-        time={data[0]}
-        day={data[2]}
-        openDetails={openDetails}
-      />
-    </main>
+        <motion.div
+          className="App_main"
+          animate={variants}
+        >
+          {Object.keys(data).length > 0 &&
+            <>
+              <Quote openDetail={openDetails} />
+
+              <div className="App_main_bottom">
+                <Time openDetails={openDetails} />
+                <Button
+                  onClick={() => setOpenDetails(!openDetails)}
+                  openDetails={openDetails}
+                />
+              </div>
+            </>
+          }
+        </motion.div>
+
+        <Details openDetails={openDetails} />
+      </main>
+    </DataContext.Provider>
   )
 }
 

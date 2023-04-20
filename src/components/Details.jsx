@@ -1,15 +1,21 @@
+import { useContext } from "react";
 import { motion } from "framer-motion";
 
-function Details({ time, day, openDetails }) {
+import { DataContext } from "../dataContext";
+
+function Details({ openDetails }) {
+  const data = useContext(DataContext);
+
   return (
     <motion.div
+      aria-hidden={openDetails ? "false" : "true"}
       className="details"
       style={{
-        backgroundColor: `${!!day ? "hsla(0, 0%, 100%, 0.75)" : "hsla(0, 0%, 0%, 0.75)"}`,
-        color: `${day ? "hsl(0, 0%, 19%)" : "hsl(0, 0%, 100%)"}`
+        backgroundColor: `${!!data.day ? "hsla(0, 0%, 100%, 0.75)" : "hsla(0, 0%, 0%, 0.75)"}`,
+        color: `${data.day ? "hsl(0, 0%, 19%)" : "hsl(0, 0%, 100%)"}`
       }}
       animate={{
-        y: openDetails ? [300, 0] : [0, 300],
+        y: openDetails ? [400, 0] : [0, 400],
         opacity: openDetails ? [0, 1] : [1, 0]
       }}
     >
@@ -20,7 +26,7 @@ function Details({ time, day, openDetails }) {
           </h3>
 
           <span className="text_info">
-            {time?.timezone}
+            {data.time?.timezone}
           </span>
         </div>
 
@@ -30,7 +36,7 @@ function Details({ time, day, openDetails }) {
           </h3>
 
           <span className="text_info">
-            {time?.day_of_year}
+            {data.time?.day_of_year}
           </span>
         </div>
 
@@ -40,7 +46,7 @@ function Details({ time, day, openDetails }) {
           </h3>
 
           <span className="text_info">
-            {time?.day_of_week}
+            {data.time?.day_of_week}
           </span>
         </div>
 
@@ -50,7 +56,7 @@ function Details({ time, day, openDetails }) {
           </h3>
 
           <span className="text_info">
-            {time?.week_number}
+            {data.time?.week_number}
           </span>
         </div>
       </div>

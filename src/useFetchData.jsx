@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react";
 
 export const useFetchData = () => {
-  const [state, setState] = useState([]);
+  const [state, setState] = useState({});
   const [refresh, setRefresh] = useState(false);
 
   function getTime() {
@@ -10,7 +10,7 @@ export const useFetchData = () => {
   }
   
   function getPlace() {
-    return axios.get("https://worldtimeapi.org/api/ip");
+    // return axios.get("https://api.ipbase.com/v2/info?apikey=A3Lndr4B4W6ZXlmL40vD5wWl6dxLf7sOwxht9LzG&ip=1.1.1.1");
   }
   
   function getQuote() {
@@ -30,7 +30,14 @@ export const useFetchData = () => {
         if (hour >= 18 || hour <= 5) day = false;
         else day = true;
 
-        setState([time, quote, day, refresh, setRefresh]);
+        setState({
+          time,
+          // place,
+          quote,
+          day,
+          refresh,
+          setRefresh: setRefresh
+        });
 
         // Rerenders every new minute
         let seconds = Number(time?.datetime[17] + time?.datetime[18]);
@@ -40,7 +47,7 @@ export const useFetchData = () => {
           setRefresh(!refresh);
         }, timeout)
       })
-      .catch((err) => console.log(err.message))
+      .catch((err) => err)
   }, [refresh])
 
   return state;
