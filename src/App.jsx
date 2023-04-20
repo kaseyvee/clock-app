@@ -31,7 +31,7 @@ function App() {
   }
   
   function getJumpHeight() {
-    if (isMobile) return setJumpHeight(-150);
+    if (isMobile) return setJumpHeight(-250);
     if (isDesktop) return setJumpHeight(-350);
     return setJumpHeight(-320);
   }
