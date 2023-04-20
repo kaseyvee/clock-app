@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react";
+import { parseTime } from "./parseTime";
 
 export const useFetchData = () => {
   const [state, setState] = useState({});
@@ -25,7 +26,7 @@ export const useFetchData = () => {
         const quote = results[2].data;
         
         // Sees if daylight is out
-        const hour = Number(time?.datetime[11]) + Number(time?.datetime[12]);
+        const hour = parseTime(time, 11, 12);
         let day = null;
         if (hour >= 18 || hour <= 5) day = false;
         else day = true;
@@ -36,12 +37,12 @@ export const useFetchData = () => {
           quote,
           day,
           refresh,
-          setRefresh: setRefresh
+          setRefresh
         });
 
         // Rerenders every new minute
-        let seconds = Number(time?.datetime[17] + time?.datetime[18]);
-        let timeout = 60000 - (1000 * seconds);
+        const seconds = parseTime(time, 17, 18)
+        const timeout = 60000 - (1000 * seconds);
 
         setTimeout(() => {
           setRefresh(!refresh);

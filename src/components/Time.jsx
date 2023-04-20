@@ -2,7 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import Moment from "react-moment";
 
-import { DataContext } from "../dataContext";
+import { DataContext } from "../helpers/dataContext";
+import { parseTime } from "../helpers/parseTime";
 
 function Time() {
   const [greeting, setGreeting] = useState("");
@@ -14,7 +15,7 @@ function Time() {
   }, [])
 
   function getGreeting() {
-    let hour = Number(data.time?.datetime[11]) + Number(data.time?.datetime[12]);
+    let hour = parseTime(data.time, 11, 12)
 
     if (hour >= 18 || hour <= 5) return setGreeting("GOOD EVENING");
     else if (hour >= 12) return setGreeting("GOOD AFTERNOON");

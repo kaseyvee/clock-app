@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { motion } from "framer-motion";
 
-import { DataContext } from "../dataContext";
+import { DataContext } from "../helpers/dataContext";
 
 function Quote() {
   const data = useContext(DataContext);

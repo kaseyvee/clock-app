@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
-import { useFetchData } from "./useFetchData";
-import { DataContext } from "./dataContext";
+import { useFetchData } from "./helpers/useFetchData";
+import { DataContext } from "./helpers/dataContext";
 
 import Button from "./components/Button";
 import Details from "./components/Details";
@@ -43,7 +43,7 @@ function App() {
 
   return (
     <DataContext.Provider value={data}>
-      <main
+      {Object.keys(data).length > 0 && <main
         className="App"
         style={{
           backgroundImage: `linear-gradient(
@@ -68,7 +68,7 @@ function App() {
         </motion.div>
 
         <Details openDetails={openDetails} />
-      </main>
+      </main>}
       
       <Loading loading={loading} />
     </DataContext.Provider>
