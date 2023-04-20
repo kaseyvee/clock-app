@@ -9,12 +9,19 @@ import Button from "./components/Button";
 import Details from "./components/Details";
 import Quote from "./components/Quote";
 import Time from "./components/Time";
+import Loading from "./components/Loading";
 
 function App() {
   const [openDetails, setOpenDetails] = useState(false);
   const [jumpHeight, setJumpHeight] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const data = useFetchData();
+  if (Object.keys(data).length > 0) {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }
   
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' });
@@ -49,23 +56,21 @@ function App() {
           className="App_main"
           animate={variants}
         >
-          {Object.keys(data).length > 0 &&
-            <>
-              <Quote openDetail={openDetails} />
+          <Quote openDetail={openDetails} />
 
-              <div className="App_main_bottom">
-                <Time openDetails={openDetails} />
-                <Button
-                  onClick={() => setOpenDetails(!openDetails)}
-                  openDetails={openDetails}
-                />
-              </div>
-            </>
-          }
+          <div className="App_main_bottom">
+            <Time openDetails={openDetails} />
+            <Button
+              onClick={() => setOpenDetails(!openDetails)}
+              openDetails={openDetails}
+            />
+          </div>
         </motion.div>
 
         <Details openDetails={openDetails} />
       </main>
+      
+      <Loading loading={loading} />
     </DataContext.Provider>
   )
 }
