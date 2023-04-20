@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Loading({ loading }) {
   const [display, setDisplay] = useState(true);
 
   const animationDuration = 1;
 
-  useEffect(() => {
-    if (!loading) {
-      setTimeout(() => {
-        setDisplay(false);
-      }, animationDuration * 1200)
-    }
-  }, [])
+  if (!loading) {
+    setTimeout(() => {
+      setDisplay(false);
+    }, animationDuration * 1200)
+  }
 
   return (
     <motion.div
