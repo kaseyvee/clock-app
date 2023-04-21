@@ -35,6 +35,9 @@ Users should be able to:
 - Sass
 - Flexbox
 - Mobile-first workflow
+- [Programming Quotes API](https://github.com/lukePeavey/quotable)
+- [World Time API](http://worldtimeapi.org/)
+- [IP Geolocation API](https://freegeoip.app/) (not implemented at the moment due to limited api calls)
 
 ### What I learned
 
