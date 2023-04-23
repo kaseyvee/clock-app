@@ -19,6 +19,8 @@ export const useFetchData = () => {
   }
 
   useEffect(() => {
+    let timeoutId;
+
     Promise.all([getTime(), getPlace(), getQuote()])
       .then((results) => {
         const time = results[0].data;
@@ -44,11 +46,13 @@ export const useFetchData = () => {
         const seconds = parseTime(time, 17, 18)
         const timeout = 60000 - (1000 * seconds);
 
-        setTimeout(() => {
+        timeoutId = setTimeout(() => {
           setRefresh(!refresh);
         }, timeout)
       })
       .catch((err) => err)
+      
+    return () => clearTimeout(timeoutId);
   }, [refresh])
 
   return state;

@@ -45,6 +45,8 @@ I took this opportunity to get familiar with using React's useContext hook. I've
 
 Prop drilling sucks and this is the answer. It ended up being much simpler than I remember and made for much cleaner code.
 
+This is also my first time with FEM premium- and man was setup fast with the given Figma files. This saved me so much time as it allowed me to create my own utility classes and removed the time it would have taken me to guess font sizes.
+
 ### Continued development
 
 I still need to account for rotated mobile screens.
@@ -52,3 +54,5 @@ I still need to account for rotated mobile screens.
 A bug regarding the quote refresh is also still present which I believe has to do with how my setTimeout is written. I think I need a clean up function but I'm not sure where and how to implement it.
 
 For every time you refresh the quote, once the entire app rerenders to change the time, the quote refreshes as many times as you refreshed it in the last ~60s.
+
+In the mean time, I have the location hardcoded while I find a free api that gives you your city and country as the one FEM provides only has 150 api calls.
