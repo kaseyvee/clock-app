@@ -33,7 +33,7 @@ function App() {
   function getJumpHeight() {
     if (isMobile) return setJumpHeight(-250);
     if (isDesktop) return setJumpHeight(-350);
-    return setJumpHeight(-320);
+    return setJumpHeight(-300);
   }
   
   useEffect(() => {
@@ -67,7 +67,7 @@ function App() {
           </div>
         </motion.div>
 
-        <Details openDetails={openDetails} />
+        {openDetails && <Details openDetails={openDetails} />}
       </main>}
       
       <Loading loading={loading} />

@@ -5,64 +5,72 @@
   margin: 0;
   color: inherit;
 }
-body {
-  height: 100vh;
-  background-color: $grey;
-  position: relative;
-  overflow: hidden;
+
+html {
+  // height: fit-content;
+  height: 100%;
 }
 
-.App {
-  $paddingY: 2rem;
+#root, body {
+  height: 100%;
+}
 
-  padding: $paddingY 1.5rem;
-  height: calc(100vh - $paddingY * 2);
-
-  @include center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: pan 60s linear infinite;
-
-  @keyframes pan {
-    0% {
-      background-position: 10% 90%;
+body {
+  background-color: $grey;
+  
+  .App {
+    $paddingY: 2rem;
+  
+    padding: $paddingY 1.5rem;
+    height: calc(100% - $paddingY * 2);
+    // height: 100%;
+  
+    @include center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: pan 60s linear infinite;
+  
+    @keyframes pan {
+      0% {
+        background-position: 10% 90%;
+      }
+  
+      100% {
+        background-position: 90% 90%;
+      }
     }
-
-    100% {
-      background-position: 90% 90%;
+  
+    @media (min-width: 768px) and (min-height: 600px) {
+      $paddingY: 5rem;
+  
+      padding: $paddingY 3.5rem;
+      height: calc(100% - $paddingY * 2);
     }
-  }
-
-  @media (min-width: 768px) {
-    $paddingY: 5rem;
-
-    padding: $paddingY 3.5rem;
-    height: calc(100vh - $paddingY * 2);
-  }
-    
-  &_main {
-    height: 100%;
-    width: min(100%, 1100px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    &_bottom {
+      
+    &_main {
+      height: 100%;
+      width: min(100%, 1100px);
       display: flex;
       flex-direction: column;
-      gap: 3rem;
-      transition-duration: 200ms;
-
-
-      @media (min-width: 768px) {
-        gap: 5rem;
-      }
-      
-      @media (min-width: 1024px) {
-        gap: unset;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
+      justify-content: space-between;
+  
+      &_bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        transition-duration: 200ms;
+  
+  
+        @media (min-width: 768px) and (min-height: 600px){
+          gap: 5rem;
+        }
+        
+        @media (min-width: 1024px) {
+          gap: unset;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-end;
+        }
       }
     }
   }
