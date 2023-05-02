@@ -41,8 +41,7 @@ function Time() {
         </span>
       </div>
 
-      {/* <h2>IN {place?.city.name.toUpperCase()}, {place?.country.name.toUpperCase()}</h2> */}
-      <h2>IN VANCOUVER, CANADA</h2>
+      <h2>IN {data.place?.city.name.toUpperCase()}, {data.place?.country.name.toUpperCase()}</h2>
     </div>
   );
 }

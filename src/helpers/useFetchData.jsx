@@ -11,7 +11,7 @@ export const useFetchData = () => {
   }
   
   function getPlace() {
-    // return axios.get("https://api.ipbase.com/v2/info?apikey=A3Lndr4B4W6ZXlmL40vD5wWl6dxLf7sOwxht9LzG&ip=1.1.1.1");
+    return axios.get("https://api.ipbase.com/v2/info?apikey=ofX1D9eD4EgckLoeVtQClqd6nbY5cMgIoWy4F8iM&language=en&ip=1.1.1.1");
   }
   
   function getQuote() {
@@ -24,7 +24,8 @@ export const useFetchData = () => {
     Promise.all([getTime(), getPlace(), getQuote()])
       .then((results) => {
         const time = results[0].data;
-        // const place = results[1].data.data.location;
+        const place = results[1].data.data.location;
+        console.log(place)
         const quote = results[2].data;
         
         // Sees if daylight is out
@@ -35,7 +36,7 @@ export const useFetchData = () => {
 
         setState({
           time,
-          // place,
+          place,
           quote,
           day,
           refresh,
